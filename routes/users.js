@@ -4,6 +4,7 @@ const {people} = require('../data')
 const router = express.Router()
 
 
+let users = []
 
 //compiled User router for an ID
 router.route('/')
@@ -15,11 +16,12 @@ router.route('/new')
     const isValid = true //if post request is valid
     if (isValid) {
         let name = req.body.name;
-        req.user = {
+        let user = {
             name: name,
             id: count
         }
-        //req.query.arr.array.push({name: name, id:count})
+        console.log(req.body.name)
+        users.push(user)
         count++;
         //res.send(`User with name of  ${req.user.name} has been initialized.`)
         res.redirect(`/users/${users.length - 1}`)
@@ -40,9 +42,9 @@ router.param('id',(req, res, next, id) => {
     if (isNaN(Number(id)) === true){
         next()
     } else{
-        const person = people[0].find(human => human.id === Number(id) + 1)
-        req.user = person;
-        console.log(`This involves a User Object with name ${req.user.name}`)
+        // const person = people[0].find(human => human.id === Number(id) + 1)
+        // req.user = person;
+        console.log(`This involves a User Object}`)
         next()
     }
 })
