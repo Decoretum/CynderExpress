@@ -6,6 +6,13 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Hello, my fellow developers! Data is <%=text || 'Universe' %> </h1>
+    <h1>Hello, my fellow developers! These are data from an array: </h1> 
+    <% for (let i = 0; i < people.length; i++) { %>
+        <% let url = people[i].name %>
+        <p><%= people[i].name  %></p>
+        <a href="/random/<%=url%>"> Detail </a>
+    <% } %>
+    <br><br><br><br><br>
+    <a href="/"> Back to Home </a>
 </body>
 </html>
